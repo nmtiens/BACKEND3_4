@@ -18,19 +18,19 @@ export default {
     const contactFormSchema = yup.object().shape({
       name: yup
         .string()
-        .required("Ten pha co gia tri")
-        .min(2, "Ten phai co it nhat 2 ky tu.")
-        .max(50, "Ten co nhieu nhat 50 ky tu."),
+        .required("Tên phải có giá trị")
+        .min(2, "Tên phải có ít nhất 2 ký tự.")
+        .max(50, "Tên có nhiều nhất 50 ký tự."),
       email: yup
         .string()
-        .email("Email khong dung.")
-        .max(50, "E-mail toi da 50 ky tu"),
-      address: yup.string().max(100, "Dia chi toi da 100 ky tu."),
+        .email("Email không đúng.")
+        .max(50, "E-mail tối đa 50 ký tự."),
+      address: yup.string().max(100, "Địa chỉ tối đa 100 ký tự."),
       phone: yup
         .string()
         .matches(
           /((09|03|07|08|05)+([0-9]{8})\b)/g,
-          "So dien thoai khong hop le."
+          "Số điện thoại không hợp lệ."
         ),
     });
     return {
@@ -67,7 +67,7 @@ export default {
 <template>
   <Form @submit="submitContact" :validation-schema="contactFormSchema">
     <div class="form-group">
-      <label for="name">Ten</label>
+      <label for="name">Tên</label>
       <Field
         id="name"
         name="name"
@@ -90,7 +90,7 @@ export default {
       <ErrorMessage name="email" class="error-feedback" />
     </div>
     <div class="form-group">
-      <label for="address">Dia chi</label>
+      <label for="address">Địa chỉ</label>
       <Field
         name="address"
         class="form-control"
@@ -100,7 +100,7 @@ export default {
       <ErrorMessage name="address" class="error-feedback" />
     </div>
     <div class="form-group">
-      <label for="phone">So dien thoai</label>
+      <label for="phone">Điện thoại</label>
       <Field
         id="phone"
         name="phone"
@@ -118,21 +118,21 @@ export default {
         v-model="contactLocal.favourite"
       />
       <label class="form-check-label" for="favourite">
-        <strong>Lien he yeu thich</strong>
+        <strong>Liên hệ yêu thích</strong>
       </label>
     </div>
     <div class="form-group">
-      <button class="btn btn-primary">Luu</button>
+      <button class="btn btn-primary">Lưu</button>
       <button
         v-if="contactLocal._id"
         type="button"
         class="ml-2 btn btn-danger"
         @click="deleteContact"
       >
-        Xoa
+        Xóa
       </button>
       <button class="ml-2 btn btn-danger" type="button" @click="Cancel">
-        Thoat
+        Thoát
       </button>
     </div>
   </Form>

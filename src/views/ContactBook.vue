@@ -130,7 +130,7 @@ export default {
           }"
         >
           <span class="mt-2 badge badge-warning">
-            <i class="fas fa-edit"></i>Hieu chinh
+            <i class="fas fa-edit"></i>Hiệu chỉnh
           </span>
         </router-link>
       </div>
